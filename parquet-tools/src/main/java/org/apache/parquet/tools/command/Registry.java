@@ -32,6 +32,8 @@ public final class Registry {
     registry.put("meta", ShowMetaCommand.class);
     registry.put("dump", DumpCommand.class);
     registry.put("merge", MergeCommand.class);
+    registry.put("rowcount", RowCountCommand.class);
+    registry.put("size", SizeCommand.class);
   }
 
   public static Map<String,Command> allCommands() {
@@ -47,7 +49,7 @@ public final class Registry {
   }
 
   public static Command getCommandByName(String name) {
-    Class<? extends Command> clazz = registry.get(name);
+	Class<? extends Command> clazz = registry.get(name);
     if (clazz == null) {
       return null;
     }

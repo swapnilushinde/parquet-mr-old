@@ -19,7 +19,6 @@
 package org.apache.parquet.tools;
 
 import java.io.IOException;
-
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -168,7 +167,6 @@ public class Main {
   public static void main(String[] args) {
     Main.out = System.out;
     Main.err = System.err;
-
     PrintStream VoidStream = new PrintStream(new OutputStream() {
       @Override
       public void write(int b) throws IOException {}
@@ -181,9 +179,10 @@ public class Main {
       @Override
       public void close() throws IOException {}
     });
+    
     System.setOut(VoidStream);
     System.setErr(VoidStream);
-
+    
     if (args.length == 0) {
       die("No command specified", true, null, null);
     }
@@ -198,7 +197,7 @@ public class Main {
     if (command == null) {
       die("Unknown command: " + name, true, null, null);
     }
-
+        
     boolean debug = false;
     Options options = mergeOptions(OPTIONS, command.getOptions());
     try {

@@ -52,7 +52,6 @@ public class ShowMetaCommand extends ArgsOnlyCommand {
   @Override
   public void execute(CommandLine options) throws Exception {
     super.execute(options);
-
     String[] args = options.getArgs();
     String input = args[0];
     
@@ -60,7 +59,6 @@ public class ShowMetaCommand extends ArgsOnlyCommand {
     Path inputPath = new Path(input);
     FileStatus inputFileStatus = inputPath.getFileSystem(conf).getFileStatus(inputPath);
     List<Footer> footers = ParquetFileReader.readFooters(conf, inputFileStatus, false);
-
     PrettyPrintWriter out = PrettyPrintWriter.stdoutPrettyPrinter()
                                              .withAutoColumn()
                                              .withWhitespaceHandler(WhiteSpaceHandler.COLLAPSE_WHITESPACE)
